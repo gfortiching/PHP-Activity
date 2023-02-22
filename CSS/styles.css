@@ -2,7 +2,61 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
+    padding: 0;
 }
+
+/* Header */
+
+.userAccounts {
+    background-color: rgb(38, 54, 83);
+    padding: 1em 2em;
+    margin: auto;
+    height: 75px;
+}
+
+.userAccounts ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+}
+
+.userAccounts li {
+    list-style: none;
+    text-align: center;
+    color: white;
+}
+
+.userAccounts a {
+    background-color: rgb(12, 24, 79);
+}
+
+.greetings {
+    text-align: center;
+    color: white;
+    list-style: none;
+    margin-left: auto;
+}
+
+.logInOut {
+    display: flex;
+    justify-content: center;
+    padding: 0.5em;
+}
+
+.logInOut a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 0.5em;
+    background-color: rgb(23, 23, 78);
+}
+
+.logInOut a:hover {
+    background-color: rgb(112, 120, 169);
+}
+
+/* */
+
 
 .insert {
     padding: 0.5em;
@@ -32,43 +86,12 @@
     background-color: rgb(23, 23, 78);
 }
 
-.userAccounts {
-    background-color: rgb(38, 54, 83);
-    padding: 1em 0;
-    margin: auto;
-}
-
-.userAccounts a {
-    background-color: rgb(12, 24, 79);
-}
-
-.userAccounts h1 {
-    text-align: center;
-    color: white;
-}
-
-.logInOut {
-    display: flex;
-    justify-content: center;
-    padding: 0.5em;
-}
-
-.logInOut a {
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    padding: 0.5em;
-    background-color: rgb(23, 23, 78);
-}
-
-.logInOut a:hover {
-    background-color: rgb(112, 120, 169);
-}
-
 /* Table */
 
 .tableSection {
-    width: 90vw;
-    margin: auto;
+    width: 100%;
+    padding: 0 5%;
+    margin-top: 75px;
 }
 
 table {
