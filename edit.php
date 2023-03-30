@@ -33,27 +33,66 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Database</title>
-    <link rel="stylesheet" href="/School_Registrar/css/styles.css">
-
+    <link rel="stylesheet" href="./CSS/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 
 </html>
 
 <body>
-    <div class="insert"><a href="index.php">Back to Students' Information</a></div>
-    <form class="editStudent" action="" method="post">
-        <h2>Update Student Details</h2>
-        <label>First Name</label>
-        <input type="text" name="firstname" id="firstname" value="<?php echo $row['First_Name']; ?>" />
-        <label>Last Name</label>
-        <input type="text" name="lastname" id="lastname" value="<?php echo $row['Last_Name']; ?>" />
-        <label>Gender</label>
-        <select name="gender" id="gender">
-            <option value="Male" <?php echo ($row['Gender'] == "Male") ? 'selected' : ''; ?>>Male</option>
-            <option value="Female" <?php echo ($row['Gender'] == "Female") ? 'selected' : ''; ?>>Female</option>
-        </select>
-        <label>Date of Birth</label>
-        <input type="text" name="birthdate" id="birthdate" value="<?php echo $row['Birth_Date']; ?>" />
-        <input type="submit" name="submit" value="Update">
-    </form>
+    <nav class="user-accounts">
+        <ul>
+            <li>Student Database</li>
+            <li>
+                <a class="home" href="home.php">Home</a>
+            </li>
+            <li>
+                <?php if (!isset($_SESSION)) {
+                    session_start();
+                }
+
+                if (isset($_SESSION["UserLogin"])) {
+                    echo "Welcome, " . $_SESSION['UserLogin'] . "!";
+                } else {
+                    echo "Welcome Guest";
+                } ?>
+            </li>
+            <li class="logInOut">
+                <?php if (isset($_SESSION['UserLogin'])) { ?>
+                    <a href=" logout.php">Logout</a>
+                <?php } else { ?>
+
+                    <a href="login.php">Login</a>
+                <?php } ?>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="edit-section">
+        <div class="back">
+            <a href="home.php">Back to Students' Information</a>
+        </div>
+        <form class="edit-student" action="" method="post">
+            <h3>Update Student Details</h3>
+            <label>First Name</label>
+            <input type="text" name="firstname" id="firstname" value="<?php echo $row['First_Name']; ?>" />
+            <label>Last Name</label>
+            <input type="text" name="lastname" id="lastname" value="<?php echo $row['Last_Name']; ?>" />
+            <label>Gender</label>
+            <select name="gender" id="gender">
+                <option value="Male" <?php echo ($row['Gender'] == "Male") ? 'selected' : ''; ?>>Male</option>
+                <option value="Female" <?php echo ($row['Gender'] == "Female") ? 'selected' : ''; ?>>Female</option>
+            </select>
+            <label>Date of Birth</label>
+            <input type="text" name="birthdate" id="birthdate" value="<?php echo $row['Birth_Date']; ?>" />
+            <input type="submit" name="submit" value="Update">
+        </form>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 </body>
+
+</html>

@@ -2,9 +2,8 @@
 
 include_once("Connections/connection.php");
 $con = connection();
-$search = $_GET['search'];
 
-$sql = "SELECT * FROM student_info WHERE First_Name LIKE '%$search%' || Last_Name LIKE '%$search%' ORDER BY id DESC";
+$sql = "SELECT * FROM student_info ORDER BY ID DESC";
 $students = $con->query($sql) or die($con->error);
 $row = $students->fetch_assoc();
 
@@ -30,7 +29,7 @@ $row = $students->fetch_assoc();
             <li>
                 <a class="home" href="home.php">Home</a>
             </li>
-            <li class="greetings">
+            <li>
                 <?php if (!isset($_SESSION)) {
                     session_start();
                 }
@@ -38,7 +37,7 @@ $row = $students->fetch_assoc();
                 if (isset($_SESSION["UserLogin"])) {
                     echo "Welcome, " . $_SESSION['UserLogin'] . "!";
                 } else {
-                    echo "Welcome Guest";
+                    echo "Welcome, Guest.";
                 } ?>
             </li>
             <li class="login-logout">
@@ -53,14 +52,15 @@ $row = $students->fetch_assoc();
     </nav>
 
     <main class="table-section">
-        <div class="insert">
+        <span class="insert">
             <a href="insert.php">Insert New Student Info</a>
-        </div>
+        </span>
+
         <form class="search" action="result.php" method="get">
             <input type="text" name="search" id="search" />
             <button class="search-button" type="submit">Search</button>
         </form>
-        <table>
+        <table class="table-striped">
             <caption class="caption-top">List of Students</caption>
             <thead>
                 <tr>
@@ -74,31 +74,26 @@ $row = $students->fetch_assoc();
             </thead>
             <tbody>
                 <?php do { ?>
-                    <?php if ($row == null) { ?>
-                        <h2 style=" color: red;">Student Information Not Found</h2>
-                    <?php } else { ?>
-                        <tr>
-                            <td class="view">
-                                <a href="details.php?ID=<?php echo $row['ID']; ?>">view info</a>
-                            </td>
-                            <td>
-                                <?php echo $row['ID']; ?>
-                            </td>
-                            <td>
-                                <?php echo $row['First_Name']; ?>
-                            </td>
-                            <td>
-                                <?php echo $row['Last_Name']; ?>
-                            </td>
-                            <td>
-                                <?php echo $row['Gender']; ?>
-                            </td>
-                            <td>
-                                <?php echo $row['Birth_Date']; ?>
-                            </td>
-                        </tr>
-                    <?php } ?>
-
+                    <tr>
+                        <td class="view">
+                            <a href="details.php?ID=<?php echo $row['ID']; ?>">view info</a>
+                        </td>
+                        <td>
+                            <?php echo $row['ID']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row['First_Name']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row['Last_Name']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row['Gender']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row['Birth_Date']; ?>
+                        </td>
+                    </tr>
                 <?php } while ($row = $students->fetch_assoc()) ?>
             </tbody>
         </table>

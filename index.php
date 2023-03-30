@@ -17,25 +17,30 @@ $row = $students->fetch_assoc();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Database</title>
-    <link rel="stylesheet" href="/School_Registrar/css/styles.css">
+    <link rel="stylesheet" href="./CSS/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 
 <body>
-    <nav class="userAccounts">
+    <nav class="user-accounts">
         <ul>
             <li>Student Database</li>
-            <li class="greetings">
+            <li>
+                <a class="home" href="home.php">Home</a>
+            </li>
+            <li>
                 <?php if (!isset($_SESSION)) {
                     session_start();
                 }
 
                 if (isset($_SESSION["UserLogin"])) {
-                    echo "Welcome " . $_SESSION['UserLogin'];
+                    echo "Welcome, " . $_SESSION['UserLogin'] . "!";
                 } else {
-                    echo "Welcome Guest";
+                    echo "Welcome, Guest.";
                 } ?>
             </li>
-            <li class="logInOut">
+            <li class="login-logout">
                 <?php if (isset($_SESSION['UserLogin'])) { ?>
                     <a href=" logout.php">Logout</a>
                 <?php } else { ?>
@@ -45,53 +50,11 @@ $row = $students->fetch_assoc();
             </li>
         </ul>
     </nav>
+    <main></main>
 
-
-    <section class="tableSection">
-        <div class="insert"><a href="insert.php">Insert New Student Info</a></div>
-
-        <form class="search" action="result.php" method="get">
-            <input type="text" name="search" id="search" />
-            <button type="submit">Search</button>
-        </form>
-        <table>
-            <caption>List of Students</caption>
-            <thead>
-                <tr>
-                    <th>View</th>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Gender</th>
-                    <th>Birth Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php do { ?>
-                    <tr>
-                        <td class="view">
-                            <a href="details.php?ID=<?php echo $row['ID']; ?>">view info</a>
-                        </td>
-                        <td>
-                            <?php echo $row['ID']; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['First_Name']; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['Last_Name']; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['Gender']; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['Birth_Date']; ?>
-                        </td>
-                    </tr>
-                <?php } while ($row = $students->fetch_assoc()) ?>
-            </tbody>
-        </table>
-    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -5,110 +5,108 @@
     padding: 0;
 }
 
-/* Header */
-
-.userAccounts {
-    background-color: rgb(38, 54, 83);
-    padding: 1em 2em;
-    margin: auto;
-    height: 75px;
+:root {
+    --black: #000;
+    --white: #fff;
+    --green: rgb(21, 89, 65);
+    --light-green: rgb(28, 121, 89);
 }
 
-.userAccounts ul {
+/* Navigation Bar */
+
+.user-accounts {
+    display: flex;
+    align-items: center;
+    background-color: var(--green);
+    margin: auto;
+    padding: 0 5%;
+    height: 60px;
+}
+
+.user-accounts ul {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 0;
+    margin: 0;
+    width: 100%;
 }
 
-.userAccounts li {
+.user-accounts li {
     list-style: none;
     text-align: center;
-    color: white;
+    color: var(--white);
+    margin: 0 10px;
 }
 
-.userAccounts a {
-    background-color: rgb(12, 24, 79);
-}
-
-.greetings {
-    text-align: center;
-    color: white;
-    list-style: none;
+.user-accounts li:nth-child(3) {
     margin-left: auto;
 }
 
-.logInOut {
+/* Navigation Lists */
+
+.user-accounts a {
+    text-decoration: none;
+    color: white;
+}
+
+.login-logout {
     display: flex;
     justify-content: center;
-    padding: 0.5em;
+    background-color: var(--white);
+    border-radius: 15px;
 }
 
-.logInOut a {
+.login-logout a {
+    text-decoration: none;
+    color: var(--black);
+    padding: 2px 20px;
+}
+
+/* Home.php */
+
+/* Insert Button, Back Button and Edit/Delete Button */
+
+.insert a, .back a, .edit a {
     text-decoration: none;
     color: rgb(255, 255, 255);
-    padding: 0.5em;
-    background-color: rgb(23, 23, 78);
+    padding: 10px;
+    background-color: var(--green);
 }
 
-.logInOut a:hover {
-    background-color: rgb(112, 120, 169);
-}
-
-/* */
-
-
-.insert {
-    padding: 0.5em;
-    margin-top: 1em;
-}
-
-.insert a {
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    padding: 0.5em;
-    background-color: rgb(23, 23, 78);
-}
-
-.insert a:hover {
-    color: rgb(5, 4, 35);
-    background-color: rgb(112, 120, 169);
-}
-
-.back {
-    background-color: rgb(38, 54, 83);
-}
-
-.back a {
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    padding: 0.5em;
-    background-color: rgb(23, 23, 78);
+.insert a:hover,
+.back a:hover,
+.edit a:hover {
+    color: var(--black);
+    background-color: var(--green);
 }
 
 /* Table */
 
-.tableSection {
+.table-section {
     width: 100%;
     padding: 0 5%;
-    margin-top: 75px;
+    margin-top: 60px;
 }
 
 table {
-    background-color: rgb(237, 237, 255);
     margin: auto;
     width: inherit;
 }
 
 table caption {
-    font-size: 2em;
+    font-size: 24px;
     margin: 1em 0;
 }
 
+thead tr {
+    text-align: center;
+} 
+
 th {
     padding: 1em;
-    background-color: rgb(21, 21, 99);
-    color: white;
+    background-color: var(--green);
+    color: var(--white);
     font-weight: 600;
 }
 
@@ -123,21 +121,32 @@ th:last-of-type {
 td {
     text-align: center;
     padding: 0.5em 0;
-    border: 1px solid black;
+    border: 1px solid var(--black);
 }
 
-/* Insert Form */
+/* Insert.php */
 
-form[class="insertForm"] {
+.insert-section {
+    width: 100%;
+    padding: 0 5%;
+    margin-top: 60px;
+}
+
+form[class="insert-form"] {
     display: flex;
     flex-direction: column;
     justify-content: center;
     max-width: 500px;
     min-width: 300px;
     margin: 1em auto;
-    padding: 2em;
-    background-color: rgb(198, 215, 235);
-    border-radius: 1em;
+    padding: 50px;
+    background-color: var(--green);
+    color: white;
+    border-radius: 10px;
+}
+
+form[class="insert-form"] h3 {
+    text-align: center;
 }
 
 label {
@@ -146,24 +155,14 @@ label {
 
 label,
 input {
-    margin: 0.25em 0;
+    margin: 10px 0;
+    border: 0;
 }
 
 input[type="submit"] {
     padding: 0.5em 1em;
-    background-color: rgb(25, 56, 87);
-    color: white;
-    max-width: 250px;
-    margin: 1em auto;
-    font-weight: 800;
-    border: 0;
-    cursor: pointer;
-}
-
-button[type="submit"] {
-    padding: 0.5em 1em;
-    background-color: rgb(25, 56, 87);
-    color: white;
+    background-color: var(--white);
+    color: var(--black);
     max-width: 250px;
     margin: 1em auto;
     border: 0;
@@ -172,17 +171,17 @@ button[type="submit"] {
 
 .view a {
     text-decoration: none;
-    color: rgb(48, 102, 189);
+    color: var(--green);
 }
 
 .view a:hover {
-    color: black;
+    color: var(--black);
 }
 
 /* Login Form */
 
-form[class="loginForm"] {
-    background-color: rgb(198, 215, 235);
+form[class="login-form"] {
+    background-color: var(--green);
     border-radius: 1em;
     display: flex;
     flex-direction: column;
@@ -191,15 +190,24 @@ form[class="loginForm"] {
     max-width: 500px;
     min-width: 300px;
     margin: 2em auto;
+    color: var(--white);
 }
 
-form[class="loginForm"] h1 {
-    margin: 0 auto 1em;
+form[class="login-form"] h3 {
+    text-align: center;
+}
+
+/* Details.php */
+
+.details-section {
+    width: 100%;
+    padding: 0 5%;
+    margin-top: 60px;
 }
 
 /* View Student Info */
 
-.studentInfo {
+.student-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -207,35 +215,42 @@ form[class="loginForm"] h1 {
     min-width: 300px;
     margin: 1em auto;
     padding: 2em;
-    background-color: rgb(198, 215, 235);
-    border-radius: 1em;
-
+    background-color: var(--green);
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px var(--black);
 }
 
-.studentInfo h2 {
+.student-info h3 {
     text-align: center;
     margin-bottom: 1em;
-    background-color: rgb(34, 64, 99);
-    color: white;
+    color: var(--white);
     padding: 0.5em;
-    border-radius: 1em;
 }
 
-.studentInfo h3 {
+.student-info p {
     margin: 1em 0;
-    background-color: rgb(34, 64, 99);
-    color: white;
+    background-color: var(--white);
+    color: var(--black);
     padding: 0.5em 1em;
     border-radius: 1em;
 }
 
-.studentInfo span {
-    color: rgb(166, 212, 255);
+.student-info span.info {
+    color: var(--black);
+    font-weight: 600;
+}
+
+/* Edit.php */
+
+.edit-section {
+    width: 100%;
+    padding: 0 5%;
+    margin-top: 60px;
 }
 
 /* Edit Student Info */
 
-form[class="editStudent"] {
+form[class="edit-student"] {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -243,32 +258,63 @@ form[class="editStudent"] {
     min-width: 300px;
     margin: 1em auto;
     padding: 2em;
-    background-color: rgb(198, 215, 235);
+    background-color: var(--green);
+    color: var(--white);
     border-radius: 1em;
 }
 
-form[class="editStudent"] h2 {
+form[class="edit-student"] h3 {
     text-align: center;
     margin: 1em 0;
+}
+
+input[type="text"] {
+    padding: 5px;
+    border: 0;
+}
+
+.edit-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    margin: 5px 5px;
+    width: 120px;
+    background-color: var(--white);
+    color: var(--black);
+    text-decoration: none;
+    border: 0;
+}
+
+button[class="delete"] {
+    color: var(--black);
+    border: 0;
+    background-color: transparent;
+}
+
+.edit-info:hover {
+    background-color: var(--light-green);
+    color: var(--white);
+}
+
+button[class="delete"]:hover {
+    color: white;
 }
 
 /* Search */
 
 form[class="search"] {
-    margin: 1em auto;
-    padding: 1em;
+    margin: 1em 0;
 }
 
-.backEdit {
-    padding: 0.5em;
-    margin-top: 1em;
-    display: flex;
-    flex-direction: column;
+input[id="search"] {
+    padding: 4px;
+    border: 2px solid black;
 }
 
-.buttons {
-    text-decoration: none;
-    color: white;
-    padding: 0.5em;
-    background-color: rgb(23, 23, 78);
+button[class="search-button"] {
+    padding: 5px;
+    border: 0;
+    background-color: var(--green);
+    color: var(--white);
 }
